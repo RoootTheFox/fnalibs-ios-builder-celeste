@@ -6,13 +6,15 @@
 # Written by Caleb Cornett.
 # Usage: ./updatelibs.sh
 
+builder_dir=$(pwd)
+
 # Clone repos if needed
 if [ ! -d "./SDL2/" ]; then
 	echo "SDL2 folder not found. Cloning now..."
 	git clone https://github.com/libsdl-org/SDL.git SDL2
 	cd "./SDL2/"
 	git checkout 257cacab183b312bbe60bd7967eee44a3ad7be85
-	cd ..
+	cd "$builder_dir"
 
 	echo ""
 fi
@@ -26,9 +28,9 @@ if [ ! -d "./FNA3D/" ]; then
 	git clone https://github.com/KhronosGroup/Vulkan-Headers --recursive
 	cd MojoShader
 	git checkout c9037d90fa2f59b6be65d1391ca11d345356bad1
-	cd ./../Vulkan-Headers
+	cd "$builder_dir/Vulkan-Headers"
 	git checkout 85470b32ad5d0d7d67fdf411b6e7b502c09c9c52
-	cd ..
+	cd "$builder_dir"
 	# make sure everything is on the correct ref
 	git submodule update --init --recursive
 
@@ -47,7 +49,7 @@ if [ ! -d "./Theorafile/" ]; then
 	git clone https://github.com/FNA-XNA/Theorafile
 	cd "./Theorafile/"
 	git checkout 0c5504658a3108919e53b625287786a87529de42
-	cd ..
+	cd "$builder_dir"
 
 	echo ""
 fi
