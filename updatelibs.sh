@@ -37,6 +37,11 @@ if [ ! -d "./FNA3D/" ]; then
 	echo ""
 fi
 
+echo "Patching FNA3D..."
+cd "./FNA3D/"
+git apply < "$builder_dir/FNA3D-fix-FNA3D_SysRenderer.h-not-found.patch"
+cd "$builder_dir"
+
 if [ ! -d "./FAudio/" ]; then
 	echo "FAudio folder not found. Cloning now..."
 	git clone https://github.com/FNA-XNA/FAudio.git --branch 21.03.05
