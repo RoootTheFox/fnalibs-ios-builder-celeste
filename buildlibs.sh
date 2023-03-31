@@ -98,7 +98,7 @@ function buildSDL()
 	# iOS Device
 	if [ $IOS = 1 ]; then
 		xcodebuild -project $SDL_DIR/$SDL_PROJ -target "Static Library-iOS" -config Release -sdk iphoneos \
-			GCC_PREPROCESSOR_DEFINITIONS='$GCC_PREPROCESSOR_DEFINITIONS SDL_MAIN_HANDLED=1'
+			GCC_PREPROCESSOR_DEFINITIONS='$GCC_PREPROCESSOR_DEFINITIONS FNA3D_DRIVER_OPENGL=1 SDL_MAIN_HANDLED=1'
 		cp $SDL_DIR/build/Release-iphoneos/libSDL2.a ./release/ios/device/libSDL2.a
 	fi
 
@@ -123,11 +123,13 @@ function buildFNA3D()
 	if [ $IOS_SIM = 1 ]; then
 		xcodebuild -project $FNA3D_DIR/$FNA3D_PROJ -target FNA3D -config Release -sdk iphonesimulator
 		cp $FNA3D_DIR/build/Release-iphonesimulator/libFNA3D.a ./release/ios/simulator/libFNA3D.a
+
 	fi
 
 	# iOS Device
 	if [ $IOS = 1 ]; then
-		xcodebuild -project $FNA3D_DIR/$FNA3D_PROJ -target FNA3D -config Release -sdk iphoneos
+		xcodebuild -project $FNA3D_DIR/$FNA3D_PROJ -target FNA3D -config Release -sdk iphoneos \
+                        GCC_PREPROCESSOR_DEFINITIONS='$GCC_PREPROCESSOR_DEFINITIONS FNA3D_DRIVER_OPENGL=1'
 		cp $FNA3D_DIR/build/Release-iphoneos/libFNA3D.a ./release/ios/device/libFNA3D.a
 	fi
 
