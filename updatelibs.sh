@@ -26,9 +26,9 @@ if [ ! -d "./FNA3D/" ]; then
 	cd "./FNA3D/"
 	git clone https://github.com/FNA-XNA/MojoShader --recursive
 	git clone https://github.com/KhronosGroup/Vulkan-Headers --recursive
-	cd MojoShader
+	cd "$builder_dir/FNA3D/MojoShader"
 	git checkout c9037d90fa2f59b6be65d1391ca11d345356bad1
-	cd "$builder_dir/Vulkan-Headers"
+	cd "$builder_dir/FNA3D/Vulkan-Headers"
 	git checkout 85470b32ad5d0d7d67fdf411b6e7b502c09c9c52
 	cd "$builder_dir"
 	# make sure everything is on the correct ref
