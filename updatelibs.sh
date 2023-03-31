@@ -45,23 +45,3 @@ if [ ! -d "./MoltenVK" ]; then
 	echo "MoltenVK folder not found. Cloning now..."
 	git clone --recursive https://github.com/KhronosGroup/MoltenVK --branch v1.1.4 --single-branch
 fi
-
-# Check for updates...
-echo "Updating SDL2..."
-cd SDL2 && git pull && cd ..
-
-echo ""
-echo "Updating FNA3D..."
-cd FNA3D && git pull && git submodule update && cd ..
-
-echo ""
-echo "Updating FAudio..."
-cd FAudio && git pull && cd ..
-
-echo ""
-echo "Updating Theorafile..."
-cd Theorafile && git pull && cd ..
-
-echo ""
-echo "Updating MoltenVK..."
-cd MoltenVK && git pull && cd ..
