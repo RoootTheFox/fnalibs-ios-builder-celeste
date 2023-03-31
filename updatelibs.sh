@@ -19,7 +19,18 @@ fi
 
 if [ ! -d "./FNA3D/" ]; then
 	echo "FNA3D folder not found. Cloning now..."
-	git clone https://github.com/FNA-XNA/FNA3D.git --recursive --branch 21.03 --single-branch
+	git clone https://github.com/FNA-XNA/FNA3D.git --branch 21.03 --single-branch
+	# from my experience the submodules fail to clone, so we have to do it manually
+	cd "./FNA3D/"
+	git clone https://github.com/FNA-XNA/MojoShader --recursive
+	git clone https://github.com/KhronosGroup/Vulkan-Headers --recursive
+	cd MojoShader
+	git checkout c9037d90fa2f59b6be65d1391ca11d345356bad1
+	cd ./../Vulkan-Headers
+	git checkout 85470b32ad5d0d7d67fdf411b6e7b502c09c9c52
+	cd ..
+	# make sure everything is on the correct ref
+	git submodule update --init --recursive
 
 	echo ""
 fi
