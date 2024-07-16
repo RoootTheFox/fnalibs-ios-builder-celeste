@@ -61,5 +61,5 @@ fi
 
 if [ ! -d "./MoltenVK" ]; then
 	echo "MoltenVK folder not found. Cloning now..."
-	git clone --recursive https://github.com/KhronosGroup/MoltenVK --branch v1.1.4 --single-branch
+	git clone --recursive https://github.com/KhronosGroup/MoltenVK --branch v1.2.9 --single-branch
 fi

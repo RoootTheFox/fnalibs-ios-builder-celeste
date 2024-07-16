@@ -234,7 +234,7 @@ function buildMVK()
 		./fetchDependencies --ios -v
 		make ios
 		cd ..
-		cp $MVK_DIR/Package/Release/MoltenVK/MoltenVK.xcframework/ios-arm64/libMoltenVK.a ./release/ios/device/libMoltenVK.a
+		cp $MVK_DIR/Package/Release/MoltenVK/static/MoltenVK.xcframework/ios-arm64/libMoltenVK.a ./release/ios/device/libMoltenVK.a
 	fi
 
 	# tvOS Simulator
