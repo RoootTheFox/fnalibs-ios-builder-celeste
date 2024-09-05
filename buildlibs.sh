@@ -223,7 +223,7 @@ function buildMVK()
 	if [ $IOS_SIM = 1 ]; then
 		cd $MVK_DIR
 		./fetchDependencies --iossim -v
-		make iossim
+		xcodebuild build -project MoltenVKPackaging.xcodeproj -scheme "MoltenVK Package (iOS only)" -destination "generic/platform=iOS Simulator" ENABLE_BITCODE=true
 		cd ..
 		cp $MVK_DIR/Package/Release/MoltenVK/MoltenVK.xcframework/ios-arm64_x86_64-simulator/libMoltenVK.a ./release/ios/simulator/libMoltenVK.a
 	fi
@@ -232,7 +232,7 @@ function buildMVK()
 	if [ $IOS = 1 ]; then
 		cd $MVK_DIR
 		./fetchDependencies --ios -v
-		make ios
+		xcodebuild build -project MoltenVKPackaging.xcodeproj -scheme "MoltenVK Package (iOS only)" -destination "generic/platform=iOS" ENABLE_BITCODE=true
 		cd ..
 		cp $MVK_DIR/Package/Release/MoltenVK/static/MoltenVK.xcframework/ios-arm64/libMoltenVK.a ./release/ios/device/libMoltenVK.a
 	fi
@@ -241,7 +241,7 @@ function buildMVK()
 	if [ $TVOS_SIM = 1 ]; then
 		cd $MVK_DIR
 		./fetchDependencies --tvossim -v
-		make tvossim
+		xcodebuild build -project MoltenVKPackaging.xcodeproj -scheme "MoltenVK Package (tvOS only)" -destination "generic/platform=tvOS Simulator" ENABLE_BITCODE=true
 		cd ..
 		cp $MVK_DIR/Package/Release/MoltenVK/MoltenVK.xcframework/tvos-arm64_x86_64-simulator/libMoltenVK.a ./release/tvos/simulator/libMoltenVK.a
 	fi
@@ -250,7 +250,7 @@ function buildMVK()
 	if [ $TVOS = 1 ]; then
 		cd $MVK_DIR
 		./fetchDependencies --tvos -v
-		make tvos
+		xcodebuild build -project MoltenVKPackaging.xcodeproj -scheme "MoltenVK Package (tvOS only)" -destination "generic/platform=tvOS" ENABLE_BITCODE=true
 		cd ..
 		cp $MVK_DIR/Package/Release/MoltenVK/MoltenVK.xcframework/tvos-arm64_arm64e/libMoltenVK.a ./release/tvos/device/libMoltenVK.a
 	fi
